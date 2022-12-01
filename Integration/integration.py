@@ -20,8 +20,8 @@ class Deliverirororirobot:
 
 	# predefined parameter
 	ROBOTDICT = {'ROBOT1':1,'ROBOT2':2,'ROBOT3':3} # robot QR code <-> box position
-	BOXDICT = {'602173':1,'4320058':2,'4465441':3} # box code <-> target
-	SUBPOINTDICT = [-0.4,-0.7,-1.3] # target index (box code) <-> x-offset
+	BOXDICT = {'POSIT1':1,'POSIT2':2,'4465441':3} # box code <-> target
+	SUBPOINTDICT = [-1.0,-1.5,-2.0] # target index (box code) <-> x-offset
 
 	# variable
 	robotstate = ['n/a',0] # [station name,subpoint idx]
@@ -47,6 +47,15 @@ class Deliverirororirobot:
 
 		self.__run__()
 		self.robotstate = ['home',0]
+
+	def move_to_speed(self,index):
+		self.MiR.stop_mission_queue()
+		self.MiR.todolist_add(self.MiR.move_to,'highspeed'+str(index))
+		#self.MiR.todolist_add(self.MiR.scream,'beep')
+		self.MiR.start_mission_queue()
+
+		self.__run__()
+		self.robotstate = ['speed',index]
 
 	def move_to_warehouse(self):
 		self.MiR.stop_mission_queue()
