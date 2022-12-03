@@ -1,0 +1,8 @@
+[submodule "BarCoddunication"]
+	path = BarCoddunication
+	url = https://github.com/Arthicha/Barcode_Detection_and_Decoding.git
+	branch = master
+[submodule "MiRCommunication"]
+	path = MiRCommunication
+	url = https://github.com/DFdz26/MiRCommunication.git
+	branch = main
